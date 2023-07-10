@@ -1,27 +1,21 @@
 import clsx from 'clsx'
-import './Button.css'
+import css from "./Button.module.css"
 
-export const Button = ({ children, variant }) => {
-
+export const Button = ({
+    selected = false,
+    type = "button",
+    children,
+    ...otherProps
+  }) => {
     return (
-        <button 
-            className={clsx('button', variant)}
-        >
+      <button
+        className={clsx(css.btn, {
+          [css.isSelected]: selected
+        })}
+        type={type}
+        {...otherProps}
+      >
         {children}
-        </button>
-    )
-}
-
-export const PrimaryButton = () => { 
-    // logika
-
-
-    return ( 
-    <Button variant='primary'>I am Primary</Button>
-    )
-}
-
-export const SecondaryButton = () => ( 
-    // !loigka
-    <Button variant='secondary'>I am Secondary</Button>
-    )
+      </button>
+    );
+  };
