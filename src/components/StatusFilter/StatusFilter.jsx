@@ -3,7 +3,7 @@ import { useSelector } from "react-redux"
 import { statusFilters } from "../../redux/constants"
 import { getStatusFilter } from "../../redux/selectors"
 import { useDispatch } from 'react-redux'
-import { setStatusFilter } from "../../redux/actions"
+import { setStatusFilter } from "../../redux/slices"
 
 
 
