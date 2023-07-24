@@ -15,7 +15,7 @@ const tasksSlice = createSlice({
     initialState: {
         items: [],
         isLoading: false,
-        error: null
+        error: null,
     },
     extraReducers: {
         [fetchTasks.pending]: handlePending,
@@ -62,7 +62,7 @@ const tasksSlice = createSlice({
     }
 })
 
-export const { fetchingInProgress, fetchingSuccess, fetchingError} = tasksSlice.actions
+// export const { fetchingInProgress, fetchingSuccess, fetchingError} = tasksSlice.actions
 
 // const tasksInitialState = [
 //     { id: 0, text: "Learn HTML and CSS", completed: true },

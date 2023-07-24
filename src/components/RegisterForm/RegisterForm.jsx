@@ -1,6 +1,6 @@
-import css from './LoginForm.module.css'
+import css from './RegisterForm.module.css'
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -13,6 +13,10 @@ export const LoginForm = () => {
 
     return (
         <form className={css.form} onSubmit={handleSubmit}>
+            <label className={css.label}>
+                USername
+                <input type='text' name='name'/>
+            </label>
             <label className={css.label}>
                 Email
                 <input type='email' name='email'/>

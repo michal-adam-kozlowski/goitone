@@ -1,32 +1,40 @@
 import './App.css';
-import { AppBar, Layout, TaskList } from './components';
-import { TaskForm } from './components/TaskForm/TaskForm';
-import { useDispatch, useSelector } from 'react-redux';
-import { getError, getIsLoading } from './redux/selectors';
-import { useEffect } from 'react';
-import { fetchTasks } from './redux/operations';
+import { Layout, PrivateRoute, RestrictedRoute } from './components';
+import { lazy } from 'react';
+
+import { Routes, Route } from 'react-router-dom';
+
+const HomePage = lazy(() => import('./pages/Home/Home'))
+const RegisterPage = lazy(() => import('./pages/Register/Register'))
+const LoginPage = lazy(() => import('./pages/Login/Login'))
+const TasksPage = lazy(() => import('./pages/Tasks/Tasks'))
 
 function App() {
-  const dispatch = useDispatch()
-  const isLoading = useSelector(getIsLoading)
-  const error = useSelector(getError)
-
-  useEffect(() => {
-    dispatch(fetchTasks())
-  }, [dispatch])
   
   return (
-    
-      <Layout>
-        <AppBar/>
-        <TaskForm/>
-        {
-          isLoading && !error && <b>Request in progress</b>
-        }
-        <TaskList/>
-        { error && <p>{error}</p>}
-      </Layout>
-
+    <Routes>
+      <Route path='/' element={<Layout/>}>
+        <Route index element={<HomePage/>}/>
+        <Route 
+          path='/register' 
+          element={
+            <RestrictedRoute redirectTo='tasks' component={<RegisterPage/>} />
+          }
+        />
+        <Route 
+          path='/login' 
+          element={
+            <RestrictedRoute redirectTo='tasks' component={<LoginPage/>} />
+          }
+        />
+        <Route 
+          path='/tasks' 
+          element={
+            <PrivateRoute redirectTo='/login' component={<TasksPage/>}/>
+          }
+          />
+      </Route>
+    </Routes>   
   );
 }
 
