@@ -18,13 +18,13 @@ function App() {
         <Route 
           path='/register' 
           element={
-            <RestrictedRoute redirectTo='tasks' component={<RegisterPage/>} />
+            <RestrictedRoute redirectTo='/tasks' component={<RegisterPage/>} />
           }
         />
         <Route 
           path='/login' 
           element={
-            <RestrictedRoute redirectTo='tasks' component={<LoginPage/>} />
+            <RestrictedRoute redirectTo='/tasks' component={<LoginPage/>} />
           }
         />
         <Route 
