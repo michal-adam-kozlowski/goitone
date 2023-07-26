@@ -1,4 +1,6 @@
 import { Helmet } from "react-helmet"
+import { TaskList } from "../../components"
+import { TaskForm } from "../../components/TaskForm"
 
 
 const Tasks = () => {
@@ -8,7 +10,10 @@ const Tasks = () => {
         <Helmet>
             <title>Your tasks</title>
         </Helmet>
-        <div>Tasks list</div>
+        <div>
+            <TaskForm/>
+            <TaskList/>
+            </div>
     </>)
 }
 
